@@ -70,7 +70,7 @@
 			d-cache-size = <0x10000>;
 			operating-points-v2 = <&blizzard_opp>;
 			capacity-dmips-mhz = <756>;
-			performance_domains = <&cpufreq_e>;
+			performance-domains = <&cpufreq_e>;
 		};
 
 		cpu_e01: cpu@1 {
@@ -84,7 +84,7 @@
 			d-cache-size = <0x10000>;
 			operating-points-v2 = <&blizzard_opp>;
 			capacity-dmips-mhz = <756>;
-			performance_domains = <&cpufreq_e>;
+			performance-domains = <&cpufreq_e>;
 		};
 
 		cpu_e02: cpu@2 {
@@ -98,7 +98,7 @@
 			d-cache-size = <0x10000>;
 			operating-points-v2 = <&blizzard_opp>;
 			capacity-dmips-mhz = <756>;
-			performance_domains = <&cpufreq_e>;
+			performance-domains = <&cpufreq_e>;
 		};
 
 		cpu_e03: cpu@3 {
@@ -112,7 +112,7 @@
 			d-cache-size = <0x10000>;
 			operating-points-v2 = <&blizzard_opp>;
 			capacity-dmips-mhz = <756>;
-			performance_domains = <&cpufreq_e>;
+			performance-domains = <&cpufreq_e>;
 		};
 
 		cpu_p00: cpu@10100 {
