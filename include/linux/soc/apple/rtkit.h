@@ -179,4 +179,10 @@ int apple_rtkit_send_message(struct apple_rtkit *rtk, u8 ep, u64 message,
  */
 int apple_rtkit_poll(struct apple_rtkit *rtk);
 
+/*
+ * Returns the 64-bit offset where DART mappings are visible in this coprocessor's
+ * address space.
+ */
+u64 apple_rtkit_dram_mask(struct apple_rtkit *rtk);
+
 #endif /* _LINUX_APPLE_RTKIT_H_ */

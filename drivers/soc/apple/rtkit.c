@@ -297,7 +297,7 @@ static int apple_rtkit_common_rx_get_buffer(struct apple_rtkit *rtk,
 				   APPLE_RTKIT_BUFFER_REQUEST);
 		reply |= FIELD_PREP(APPLE_RTKIT_BUFFER_REQUEST_SIZE, n_4kpages);
 		reply |= FIELD_PREP(APPLE_RTKIT_BUFFER_REQUEST_IOVA,
-				    buffer->iova);
+				    buffer->iova | rtk->dram_mask);
 		apple_rtkit_send_message(rtk, ep, reply, NULL, false);
 	}
 
@@ -654,6 +654,8 @@ struct apple_rtkit *apple_rtkit_init(struct device *dev, void *cookie,
 	rtk->cookie = cookie;
 	rtk->ops = ops;
 
+	of_property_read_u64(dev->of_node, "apple,asc-dram-mask", &rtk->dram_mask);
+
 	init_completion(&rtk->epmap_completion);
 	init_completion(&rtk->iop_pwr_ack_completion);
 	init_completion(&rtk->ap_pwr_ack_completion);
@@ -940,6 +942,12 @@ void devm_apple_rtkit_free(struct device *dev, struct apple_rtkit *rtk)
 	devm_release_action(dev, apple_rtkit_free_wrapper, rtk);
 }
 EXPORT_SYMBOL_GPL(devm_apple_rtkit_free);
+
+u64 apple_rtkit_dram_mask(struct apple_rtkit *rtk)
+{
+	return rtk->dram_mask;
+}
+EXPORT_SYMBOL_GPL(apple_rtkit_dram_mask);
 
 MODULE_LICENSE("Dual MIT/GPL");
 MODULE_AUTHOR("Sven Peter <sven@svenpeter.dev>");

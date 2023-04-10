@@ -51,6 +51,8 @@ struct apple_rtkit {
 	size_t syslog_msg_size;
 
 	struct workqueue_struct *wq;
+
+	u64 dram_mask;
 };
 
 void apple_rtkit_crashlog_dump(struct apple_rtkit *rtk, u8 *bfr, size_t size);
